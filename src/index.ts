@@ -5,7 +5,7 @@ import connectDataBase from "./database/connectDataBase.js";
 import mongoose from "mongoose";
 import chalk from "chalk";
 
-export const debug = createDebug("robots:*");
+export const debug = createDebug("users:*");
 
 const port = process.env.PORT ?? 4000;
 const mongoDdUrl = process.env.MONGODB_CONNECTION_URL;
