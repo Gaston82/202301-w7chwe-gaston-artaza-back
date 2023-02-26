@@ -20,6 +20,7 @@ export const registerUser = async (
 ) => {
   try {
     const { username, email, password } = req.body;
+    const image = req.file?.filename;
 
     const hashPassword = await bcryptjs.hash(password, 10);
 
@@ -27,6 +28,7 @@ export const registerUser = async (
       username,
       password: hashPassword,
       email,
+      image,
     });
 
     res.status(201).json({ newUser, message: "The user has been created" });
