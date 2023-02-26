@@ -1,7 +1,7 @@
 import { check } from "express-validator";
 import { Router } from "express";
 import { getUsers, registerUser } from "../controllers/userControllers.js";
-import { checkFields } from "../middlewares/check-fields.js";
+import { checkFields } from "../middlewares/checkFields.js";
 
 const usersRouter = Router();
 
