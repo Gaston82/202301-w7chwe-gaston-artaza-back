@@ -11,6 +11,9 @@ const userSchema = new Schema({
     required: true,
     unique: true,
   },
+  image: {
+    type: String,
+  },
   friends: [{ type: Schema.Types.ObjectId, ref: "User" }],
   foes: [{ type: Schema.Types.ObjectId, ref: "User" }],
 });
