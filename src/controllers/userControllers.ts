@@ -31,7 +31,10 @@ export const registerUser = async (
       image,
     });
 
-    res.status(201).json({ newUser, message: "The user has been created" });
+    res.status(201).json({
+      newUser,
+      message: `The user ${newUser.username} was succesfully created`,
+    });
   } catch (error: unknown) {
     const registerUserError = new CustomError(
       (error as Error).message,
