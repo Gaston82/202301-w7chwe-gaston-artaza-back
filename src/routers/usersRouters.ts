@@ -1,9 +1,20 @@
+import { check } from "express-validator";
 import { Router } from "express";
 import { getUsers, registerUser } from "../controllers/userControllers.js";
 
 const usersRouter = Router();
 
-usersRouter.post("/register", registerUser);
+usersRouter.post(
+  "/register",
+  [
+    check("username", "Username is required").not().isEmpty(),
+    check("password", "Password should have 6 characters minimun").isLength({
+      min: 6,
+    }),
+    check("email", "Email not valid").isEmail(),
+  ],
+  registerUser
+);
 usersRouter.get("/", getUsers);
 
 export default usersRouter;
