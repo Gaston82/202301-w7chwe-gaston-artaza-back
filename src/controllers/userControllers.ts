@@ -1,3 +1,4 @@
+import bcryptjs from "bcryptjs";
 import { type NextFunction, type Request, type Response } from "express";
 import User from "../database/models/user/User.js";
 import { type UserStructure } from "./types";
@@ -18,9 +19,11 @@ export const registerUser = async (
 ) => {
   const { username, email, password } = req.body;
 
+  const hashPassword = await bcryptjs.hash(password, 10);
+
   const newUser = await User.create({
     username,
-    password,
+    password: hashPassword,
     email,
   });
 
